@@ -5,7 +5,7 @@ $(document).ready(function() {
     console.log("Index page is ready");
     connect();
 
-    $("#send").click(function() {
+    $("#send").click (function() {
         sendMessage();
     });
 
@@ -24,7 +24,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         updateNotificationDisplay();
-        stompClient.subscribe('/topic/messages', function (message) {
+        stompClient.subscribe('/topic/message', function (message) {
             showMessage(JSON.parse(message.body).content);
         });
 

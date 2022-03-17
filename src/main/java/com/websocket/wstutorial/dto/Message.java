@@ -1,5 +1,6 @@
 package com.websocket.wstutorial.dto;
 
+
 public class Message {
     private String messageContent;
 
