@@ -25,11 +25,14 @@ function connect() {
         console.log('Connected: ' + frame);
         updateNotificationDisplay();
         stompClient.subscribe('/topic/message', function (message) {
+            let m =  JSON.parse(message.body).content
             showMessage(JSON.parse(message.body).content);
+            console.log(m)
         });
 
         stompClient.subscribe('/user/topic/private-messages', function (message) {
             showMessage(JSON.parse(message.body).content);
+
         });
 
         stompClient.subscribe('/topic/global-notifications', function (message) {
@@ -45,12 +48,13 @@ function connect() {
 }
 
 function showMessage(message) {
-    $("#messages").append("<tr><td>" + message + "</td></tr>");
+    $("#messageArea").empty();
+    $("#messageArea").append(message);
 }
 
 function sendMessage() {
     console.log("sending message");
-    stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': $("#message").val()}));
+    stompClient.send("/ws/message", {}, JSON.stringify({'messageContent': $("#messageArea").val()}));
 }
 
 function sendPrivateMessage() {
