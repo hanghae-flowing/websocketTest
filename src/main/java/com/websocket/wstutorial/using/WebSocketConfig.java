@@ -1,6 +1,6 @@
 package com.websocket.wstutorial.using;
 
-import com.websocket.wstutorial.UserHandshakeHandler;
+//import com.websocket.wstutorial.UserHandshakeHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -14,8 +14,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(final StompEndpointRegistry registry) {
         registry.addEndpoint("/our-websocket")  // 1번
-                .setHandshakeHandler(new UserHandshakeHandler())
-                .setAllowedOriginPatterns("*")
+//                .setHandshakeHandler(new UserHandshakeHandler())
+                .setAllowedOrigins("http://localhost:3000")
                 .withSockJS();
     }
 
