@@ -8,7 +8,7 @@ public class Message {
         return content;
     }
 
-    public void setcontent(String content) {
+    public void setContent(String content) {
 
         this.content = content;
     }
